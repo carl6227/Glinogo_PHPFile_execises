@@ -14,8 +14,7 @@ fileLine('text.txt',3);
 //2. defining apendline function.
 function appendLine($file_name,$string_to_be_inserted,$line_number){
     if(file_exists($file_name)){
-        $file = file($file_name);   
-        $line = $file[$line_number];  
+        $file = file($file_name,FILE_IGNORE_NEW_LINES);    
         array_splice($file, $line_number-1, 0, $string_to_be_inserted);   
         file_put_contents($file_name, join("\n", $file)); 
         echo "String appended to line $line_number successfully!";
